@@ -1,0 +1,58 @@
+Instructions:
+
+First make sure that initialize.m has the correct directory for where you installed the Slepian software package obtained and fully set up from here: https://github.com/Slepian/Slepian
+
+Then:
+
+Edit and run findBestJ.m to calculate all models
+
+Then load the saved file, extract the average coefficients for the desired J value (you can plot the error to decide which one to choose).
+
+Run calcChisqWiecz.m for the coefficients you loaded from the output of fundBestJ to calculate the chi squared map
+Save the output in a .mat file.
+
+Then use write2GMT step by step to export the results to GMT
+
+You can find the optimal source depth from an average model using singleSourceDepth.m
+
+Use the GMTscripts in the corresponding folder to create the figures
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+old instructions:
+
+synthFindBestJ('synth_depth50_L120_noisefac1', 'synth50-Lmax120-testlarger5');
+clear all
+load results/synth50-Lmax120-testLarger5
+[mi,in] = min(errB)
+sf(in) % in my case this was 1.2. Use whatever the outcome is for sf in the calls below
+synthManySolutions('synth_depth50_L120_noisefac1','synth50-Lmax120-Manysolutions-sf1p2-fromLarger5',1.2)
+clear all
+load results/synth50-Lmax120-Manysolutions-sf1p2-fromLarger5
+getSourceDepths(coefs,'synth50-Lmax120-sourceDepths-sf1p2-fromLarger5')
+load results/synth50-Lmax120-sourceDepths-sf1p2-fromLarger5
+2440-rsource
+mean(2440-rsource)

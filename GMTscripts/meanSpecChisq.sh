@@ -3,7 +3,7 @@
 # 3 is subs15, index6, Ltap6. In suppl
 # 4 is subs50, index6, Ltap6. In suppl 
 
-wch=1 
+wch=1
 
 if [[ $wch -eq 2 ]]; then
     modname=NewNC-Lmax134-subs30-collectAll-index10-Ltap6-lrng26to128-Wiec
@@ -246,7 +246,7 @@ makecpt -Cgray -T${mincol}/${maxcol}
 # -Bx+l"angular radius of sill sources [@[^\circ@[]"
 # -Bx+l"radius of disk-shaped sources [@[^\circ@[]" -Bxa0.5
 # -R0.1/2.1/${dmin}/${dmax}
-gmt basemap -X10.5c  -JX5.5c/-${height} -R2.2/78/${dmin}/${dmax} -Bx+l"horizontal correlation [km]"  -By+l"depth [km]" -Bxf10a20 -Byf10a20 -BneSW
+gmt basemap -X10.5c  -JX5.5c/-${height} -R2.2/78/${dmin}/${dmax} -Bx+l"horizontal correlation scale [km]"  -By+l"depth [km]" -Bxf10a20 -Byf10a20 -BneSW
 grdimage ../GMTdata/solutions/${loadname}/singleChiSquare-km.grd
 
 #gmt grdcontour ../GMTdata/solutions/${loadname}/singleChiSquare-km.grd -C${minus2sig}, -W0.5p,black,-
@@ -269,7 +269,7 @@ cl=100
 glcol=0.8p,black
 
 # gmt plot -X6c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bpxcannots.txt -BneSw  -W1p -Bx+l"min @[\chi^2_\nu@[" --MAP_GRID_PEN=faint,100
-gmt plot -X6c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bxcannots.txt -BneSw -W1p,${cl} --MAP_TICK_LENGTH_PRIMARY=6.6p
+gmt plot -X6c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bxcannots.txt -BneSw -W1p,${cl} #--MAP_TICK_LENGTH_PRIMARY=6.6p
 
 
 axlabshift=1.14

@@ -152,28 +152,32 @@ maxcol=${onesig}
 if [[ $wch -eq 2 ]]; then
     loadname=NewSingleChiSqMat-NewNorthCalorisSmallerlon10lat3-Wiecz-Lmax134-subs30-index10-Ltap6-lrng26-128-highres
     optDepth=54.4107
-    optTh=0.392303
+    #optTh=0.392303
+    optTh=17
     maxchisq=1.3
     minchisq=0.4
 
 elif [[ $wch -eq 1 ]]; then
     loadname=NewSingleChiSqMat-NewNorthCalorisSmallerlon10lat3-Wiecz-Lmax134-subs30-index12-Ltap6-lrng26-128-highres
     optDepth=53.8551
-    optTh=0.405163
+    #optTh=0.405163
+    optTh=17.5
     maxchisq=1.3
     minchisq=0.45
 
 elif [[ $wch -eq 3 ]]; then
     loadname=NewSingleChiSqMat-NewNorthCalorisSmallerlon10lat3-Wiecz-Lmax134-subs15-10runs-index6-Ltap6-lrng26-128-highres
     optDepth=54.3084
-    optTh=0.399852
+    #optTh=0.399852
+    optTh=17
     maxchisq=1.3
     minchisq=0.4
 
 elif [[ $wch -eq 4 ]]; then    
     loadname=NewSingleChiSqMat-NewNorthCalorisSmallerlon10lat3-Wiecz-Lmax134-subs50-10runs-index6-Ltap6-lrng26-128-highres
     optDepth=53.6744
-    optTh=0.460039
+    #optTh=0.460039
+    optTh=20
     maxchisq=1.3
     minchisq=0.4
 fi

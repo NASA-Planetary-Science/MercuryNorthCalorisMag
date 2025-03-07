@@ -68,18 +68,18 @@ fi
 
 
 if [[ $wch -eq 2 ]]; then
-    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index10
+    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index10-Poster
 elif [[ $wch -eq 1 ]]; then
-    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index12
+    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index12-Poster
 elif [[ $wch -eq 3 ]]; then
-    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs15-index6
+    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs15-index6-Poster
 elif [[ $wch -eq 4 ]]; then
-    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs50-index6
+    gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs50-index6-Poster
 fi
     
 #### From here on not in paper nor suppl
 #gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index12-Ltap9
-#gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index12-Ltap11
+#gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax1-subs30-index12-Ltap11
 #gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index10-Ltap9
 #gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index10-Ltap11
 #gmt begin ../GMTfigs/NewNorthCalorisMeanSpecChiSq-Lmax134-subs30-index12-Ltap6-lrng6to128
@@ -96,35 +96,12 @@ lcoladd=0.7p,100
 minval=1e-4
 maxval=1e-1
 
-# Add shading to unused degrees: lbot-1 and ltop+1
-llow=25
-lhigh=129
-
-gmt basemap -R0/134/${minval}/${maxval} -JX8.5c/${height}l  -BneSW -Bxa20 -By10f1p -Bx+l"spherical harmonic degree @[l@[" -By+l"power @[R_l@[ [nT@[^2@[]" 
+gmt basemap  -JX8.5c/${height}l -R0/134/${minval}/${maxval} -BneSW -Bxa20 -By10f1p -Bx+l"spherical harmonic degree @[l@[" -By+l"power @[R_l@[ [nT@[^2@[]"
 gmt plot ../GMTdata/solutions/${modname}/spec/meancoef-sigshading.txt -G${shadecol}
 gmt plot ../GMTdata/solutions/${modname}/spec/meancoef-spec-${infostr}.txt -W1p,${linecol}
-
-gmt plot  -JX8.5c/${height}l -Gwhite@40 <<EOF
-0 $minval
-$llow $minval
-$llow $maxval
-0 $maxval
-0 $minval
-EOF
-
-gmt plot  -JX8.5c/${height}l -Gwhite@40 <<EOF
-$lhigh $minval
-134 $minval
-134 $maxval
-$lhigh $maxval
-$lhigh $minval
-EOF
-
-gmt plot ../GMTdata/solutions/${modname}/spec/meancoef-bestFitSpec.txt -W1p,${linecol},- -BneSW -l"${depthlabel} km"  
+gmt plot ../GMTdata/solutions/${modname}/spec/meancoef-bestFitSpec.txt -W1p,${linecol},- -BneSW -l"${depthlabel} km"
 gmt plot ../GMTdata/solutions/${modname}/spec/${add2}.txt -W${lcoladd},.- -l"30 km"
 gmt plot ../GMTdata/solutions/${modname}/spec/${add1}.txt -W${lcoladd},. -l"10 km"
-
-
 
 gmt legend -DjBR
 
@@ -273,7 +250,7 @@ makecpt -Cgray -T${mincol}/${maxcol}
 # -Bx+l"angular radius of sill sources [@[^\circ@[]"
 # -Bx+l"radius of disk-shaped sources [@[^\circ@[]" -Bxa0.5
 # -R0.1/2.1/${dmin}/${dmax}
-gmt basemap -X10.5c  -JX5.5c/-${height} -R2.2/78/${dmin}/${dmax} -Bx+l"horizontal correlation scale [km]"  -By+l"depth [km]" -Bxf10a20 -Byf10a20 -BneSW
+gmt basemap -Y-6c  -JX5c/-${height} -R2.2/78/${dmin}/${dmax} -Bx+l"horizontal correlation scale [km]"  -By+l"depth [km]" -Bxf10a20 -Byf10a20 -BneSW
 grdimage ../GMTdata/solutions/${loadname}/singleChiSquare-km.grd
 
 #gmt grdcontour ../GMTdata/solutions/${loadname}/singleChiSquare-km.grd -C${minus2sig}, -W0.5p,black,-
@@ -296,7 +273,7 @@ cl=100
 glcol=0.8p,black
 
 # gmt plot -X6c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bpxcannots.txt -BneSw  -W1p -Bx+l"min @[\chi^2_\nu@[" --MAP_GRID_PEN=faint,100
-gmt plot -X6c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bxcannots.txt -BneSw -W1p,${cl} #--MAP_TICK_LENGTH_PRIMARY=6.6p
+gmt plot -X5.5c -JX3c/-${height}  ../GMTdata/solutions/${loadname}/singleChiSquare-minPerDepth.txt -R${minchisq}/${maxchisq}/${dmin}/${dmax} -Byf10a20 -Bxcannots.txt -BneSw -W1p,${cl} #--MAP_TICK_LENGTH_PRIMARY=6.6p
 
 
 axlabshift=1.14
